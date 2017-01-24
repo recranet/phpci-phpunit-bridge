@@ -13,9 +13,12 @@
             "email": "raydelooff@gmail.com"
         }
     ],
+    "require-dev": {
+        "block8/phpci": "^1.7"
+    },
     "autoload": {
         "psr-0": {
-            "Recranet\\Plugin": ""
+            "Recranet\\Plugin": "src/"
         }
     },
     "minimum-stability": "dev"
