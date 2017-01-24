@@ -8,6 +8,10 @@
     "license": "GPLv3",
     "authors": [
         {
+            "name": "Recranet",
+            "email": "info@recranet.com"
+        },
+        {
             "name": "Raymon de Looff",
             "email": "raydelooff@gmail.com"
         }
