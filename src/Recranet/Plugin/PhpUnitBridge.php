@@ -9,6 +9,7 @@
 
 namespace Recranet\Plugin;
 
+use PHPCI\Plugin\Util\TapParser;
 use PHPCI\Plugin\PhpUnit as PhpUnitPlugin;
 
 /**
