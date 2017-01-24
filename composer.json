@@ -18,6 +18,5 @@
             "Recranet\\Plugin": ""
         }
     },
-    "target-dir": "Recranet/Plugin",
     "minimum-stability": "dev"
 }
