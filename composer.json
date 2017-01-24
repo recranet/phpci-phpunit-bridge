@@ -1,0 +1,22 @@
+{
+    "name": "recranet/phpci-phpunit-bridge",
+    "description": "A PHPCI plugin to enable testing with the Symfony PHPUnit Bridge.",
+    "type": "project",
+    "require": {
+        "block8/phpci": "^1.7"
+    },
+    "license": "GPLv3",
+    "authors": [
+        {
+            "name": "Raymon de Looff",
+            "email": "raydelooff@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Recranet\\Plugin": ""
+        }
+    },
+    "target-dir": "Recranet/Plugin",
+    "minimum-stability": "stable"
+}
