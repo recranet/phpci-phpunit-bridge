@@ -19,6 +19,47 @@ use PHPCI\Plugin\PhpUnit as PhpUnitPlugin;
 class PhpUnitBridge extends PhpUnitPlugin
 {
     /**
+    * Runs PHPUnit tests in a specified directory, optionally using specified config file(s).
+    */
+    public function execute()
+    {
+        if (empty($this->xmlConfigFile) && empty($this->directory)) {
+            $this->phpci->logFailure('Neither configuration file nor test directory found.');
+
+            return false;
+        }
+
+        $success = true;
+
+        // Run any config files first. This can be either a single value or an array.
+        if ($this->xmlConfigFile !== null) {
+            $success &= $this->runConfigFile($this->xmlConfigFile);
+        }
+
+        // Run any dirs next. Again this can be either a single value or an array.
+        if ($this->directory !== null) {
+            $success &= $this->runDir($this->directory);
+        }
+
+        $tapString = $this->phpci->getLastOutput();
+        $tapString = mb_convert_encoding($tapString, "UTF-8", "ISO-8859-1");
+
+        try {
+            $tapParser = new TapParser($tapString);
+            $output = $tapParser->parse();
+
+            $failures = $tapParser->getTotalFailures();
+
+            $this->build->storeMeta('phpunit-errors', $failures);
+            $this->build->storeMeta('phpunit-data', $output);
+        } catch (\Exception $e) {
+
+        }
+
+        return $success;
+    }
+
+    /**
      * Run the tests defined in a PHPUnit config file.
      *
      * @param $configPath
