@@ -9,14 +9,14 @@
 
 namespace Recranet\Plugin;
 
-use PHPCI\Plugin;
+use PHPCI\Plugin\PhpUnit as PhpUnitPlugin;
 
 /**
 * PHPUnit Bridge Plugin - Allows PHPUnit testing with the Symfony PHPUnit Bridge.
 *
 * @author Raymon de Looff <raydelooff@gmail.com>
 */
-class PhpUnitBridge extends PhpUnit
+class PhpUnitBridge extends PhpUnitPlugin
 {
     /**
      * Run the tests defined in a PHPUnit config file.
