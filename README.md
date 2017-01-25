@@ -1,6 +1,13 @@
 # PHPCI Symfony PHPUnit Bridge Plugin
 A PHPCI plugin to enable testing with the Symfony PHPUnit Bridge.
 
+## Installation
+You can install the plugin with Composer.
+
+```
+composer require recranet/phpci-phpunit-bridge
+```
+
 ## Configuration
 ### Options
 * **directory** [optional, string] - Directory within which you want PHPUnit to run. (default: build root) 
