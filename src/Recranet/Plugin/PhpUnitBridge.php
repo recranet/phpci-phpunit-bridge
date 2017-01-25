@@ -34,7 +34,7 @@ class PhpUnitBridge implements Plugin, ZeroConfigPlugin
     /**
      * @var string
      */
-    protected $workingDirectory;
+    protected $directory;
 
     /**
      * @var string
@@ -68,8 +68,8 @@ class PhpUnitBridge implements Plugin, ZeroConfigPlugin
      */
     public function parseOptions($options)
     {
-        if (array_key_exists('working_directory', $options)) {
-            $this->workingDirectory = $options['working_directory'];
+        if (array_key_exists('directory', $options)) {
+            $this->directory = $options['directory'];
         }
 
         if (array_key_exists('options', $options)) {
@@ -104,9 +104,9 @@ class PhpUnitBridge implements Plugin, ZeroConfigPlugin
     */
     public function execute()
     {
-        if ($this->workingDirectory) {
+        if ($this->directory) {
             $currentDirectory = getcwd();
-            chdir($this->phpci->buildPath . DIRECTORY_SEPARATOR . $this->workingDirectory);
+            chdir($this->phpci->buildPath . DIRECTORY_SEPARATOR . $this->directory);
         }
 
         $phpunit = $this->phpci->findBinary('simple-phpunit');
@@ -114,7 +114,7 @@ class PhpUnitBridge implements Plugin, ZeroConfigPlugin
         $cmd = $phpunit . ' %s %s';
         $success = $this->phpci->executeCommand($cmd, $this->options, $this->path);
 
-        if ($this->workingDirectory) {
+        if ($this->directory) {
             chdir($currentDirectory);
         }
 
